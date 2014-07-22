@@ -1,5 +1,7 @@
 <h1>Lots of people!</h1>
 <% @people.each do |person| %>
-  <h3><%= person["first_name"] %></h3>
+  <h3><%= person["first_name"] %> <%= person["middle_name"] %> <%= person["last_name"] %> <%= person["suffix"] %></h3>
+  <h4><%= person["email"] %></h4>
+  <h4><%= person["phone"] %></h4>
 <% end %>
 
