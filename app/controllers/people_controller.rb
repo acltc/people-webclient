@@ -5,5 +5,7 @@ class PeopleController < ApplicationController
   end
 
   def show
+    @person = Unirest.get("http://localhost:3000/people/#{params[:id]}.json", 
+              headers:{ "Accept" => "application/json" }).body
   end
 end

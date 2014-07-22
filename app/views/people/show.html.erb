@@ -1,2 +1,3 @@
-<h1>People#show</h1>
-<p>Find me in app/views/people/show.html.erb</p>
+<h1><%= @person["first_name"] %> <%= @person["middle_name"] %> <%= @person["last_name"] %> <%= @person["suffix"] %></h1>
+<h2>Email: <%= @person["email"] %></h2>
+<h3>Phone: <%= @person["phone"] %></h3>
