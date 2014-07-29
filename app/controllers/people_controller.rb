@@ -1,7 +1,6 @@
 class PeopleController < ApplicationController
   def index
-    # GOAL: @people = Person.all
-    Unirest.get("http://localhost:3000/people.json", headers:{ "Accept" => "application/json" }).body
+    @people = Person.all
   end
 
   def show

@@ -22,6 +22,11 @@ class Person
     return Person.new(hash)
   end
 
+  def self.all
+    array = Unirest.get("http://localhost:3000/people.json", headers:{ "Accept" => "application/json" }).body
+    return array.map{ |hash| Person.new(hash) }
+  end
+
   # REMINDER ABOUT WHAT attr_accessor IS A SHORTCUT FOR:
 
   # def first_name
@@ -33,11 +38,3 @@ class Person
   # end
 
 end
-
-
-
-p = Person.new({"id" => 1, "first_name" => "Mary"})
-p.full_name
-
-
-# Person.new({:id => 1, :first_name => "Mary", })
