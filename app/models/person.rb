@@ -17,13 +17,13 @@ class Person
   end
 
   def self.find(id)
-    hash = Unirest.get("http://localhost:3000/api/v1/people/#{id}.json", 
-              headers:{ "Accept" => "application/json", "Authorization" => "Token token=Yd64u44GQ8j7JL2pyKvhYReH_D6FSCbCeull9z7W1f0", "X-User-Email" => "jay@acltc.com" }).body
+    hash = Unirest.get("#{ENV['API_DOMAIN']}/api/v1/people/#{id}.json", 
+              headers:{ "Accept" => "application/json", "Authorization" => "Token token=#{ENV['PEOPLE_API_KEY']}", "X-User-Email" => "#{ENV['PEOPLE_API_EMAIL']}" }).body
     return Person.new(hash)
   end
 
   def self.all
-    array = Unirest.get("http://localhost:3000/api/v1/people.json", headers:{ "Accept" => "application/json", "Authorization" => "Token token=Yd64u44GQ8j7JL2pyKvhYReH_D6FSCbCeull9z7W1f0", "X-User-Email" => "jay@acltc.com" }).body
+    array = Unirest.get("#{ENV['API_DOMAIN']}/api/v1/people.json", headers:{ "Accept" => "application/json", "Authorization" => "Token token=#{ENV['PEOPLE_API_KEY']}", "X-User-Email" => "#{ENV['PEOPLE_API_EMAIL']}" }).body
     return array.map{ |hash| Person.new(hash) }
   end
 
